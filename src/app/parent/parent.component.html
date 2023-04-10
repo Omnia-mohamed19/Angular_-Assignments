@@ -1,0 +1,12 @@
+
+<app-child (childEvent)="productList=$event"></app-child>
+<div class="d-flex flex-coulm">
+<div class="card ms-5 mr-2" id="productDiv" *ngFor="let product of productList">
+  <img class="card-img-bottom" src={{product.imageUrl}} alt="Card image" style="width:100%;margin-bottom:0" width="220px" height="220px">
+  <div class="card-body">
+     <h4 class="card-title">{{product.Name}}</h4>
+     <p class="card-text">{{product.price}}</p>
+    <button class="card-link btn btn-info">Buy</button>
+  </div>
+</div>
+</div>

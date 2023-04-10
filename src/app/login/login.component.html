@@ -1,0 +1,30 @@
+
+
+<div class="container mt-3">
+  <h2>Stacked form</h2>
+  <form action="/action_page.php" #userForm="ngForm">
+    {{userForm.value |json}}
+    <div class="mb-3 mt-3">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control"  required [class.is-invalid]="email.invalid&&email.touched" [(ngModel)]="userModel.email"
+       id="email" ngModel placeholder="Enter email" name="email" #email="ngModel">
+
+       <div *ngIf="email.errors&&email.touched">
+        <small class="text-danger" *ngIf="email.errors['required']">Email is required</small>
+        <small class="text-danger" *ngIf="email.errors['pattern']">Email must contains @ and . in the format (aaa@bb.com)</small>
+    </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" required [class.is-invalid]="pass.invalid&&pass.touched"
+      pattern="^\d{8-10 A-Z}$"
+       id="pwd" ngModel placeholder="Enter password" name="pswd" #pass="ngModel">
+       <small class="text-danger" *ngIf="pass.invalid&&pass.touched">Password is required</small>
+
+    </div>
+    <button type="submit"  [disabled]="userForm.form.invalid" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+

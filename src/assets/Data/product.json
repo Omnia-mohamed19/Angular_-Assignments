@@ -1,0 +1,30 @@
+[
+  {
+  "Id": 1,
+    "Name": "Nescafe",
+    "price":150,
+    "Quantity": 50,
+   "imageUrl": "../../assets/Imges/Nescafe.jpg"
+ },
+ {
+  "Id": 1,
+   "Name": "Nescafe",
+    "price":150,
+    "Quantity": 50,
+   "imageUrl": "../../assets/Imges/Nescafe.jpg"
+ },
+ {
+  "Id": 1,
+   "Name": "Nescafe",
+    "price":150,
+    "Quantity": 50,
+   "imageUrl": "../../assets/Imges/Nescafe.jpg"
+ },
+ {
+  "Id": 1,
+   "Name": "Nescafe",
+    "price":150,
+    "Quantity": 50,
+   "imageUrl": "../../assets/Imges/Nescafe.jpg"
+ }
+]

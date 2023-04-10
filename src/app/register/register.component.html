@@ -1,0 +1,62 @@
+
+
+<div class="container mt-3">
+  <h2>Stacked form</h2>
+  <form action="/action_page.php" #userForm="ngForm" novalidate (ngSubmit)="SubmitData()">
+    {{userForm.value |json}}
+    <div class="mb-3 mt-3">
+      <label for="username">User Name:</label>
+      <input type="text" class="form-control"  required [class.is-invalid]="name.invalid&&name.touched"
+
+      [(ngModel)]="userModel.name" id="username" ngModel placeholder="Enter user name"
+        name="username" #name="ngModel">
+        <div *ngIf="name.errors&&name.touched">
+          <small class="text-danger" *ngIf="name.errors['required']">Name is required</small>
+          <small class="text-danger" *ngIf="name.errors['pattern']">Name must be contains only capital and small characters.</small>
+      </div>      <!-- {{name.touched |json}} -->
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control"  required [class.is-invalid]="email.invalid&&email.touched" [(ngModel)]="userModel.email"
+       id="email" ngModel placeholder="Enter email" name="email" #email="ngModel">
+
+       <div *ngIf="email.errors&&email.touched">
+        <small class="text-danger" *ngIf="email.errors['required']">Email is required</small>
+        <small class="text-danger" *ngIf="email.errors['pattern']">Email must contains @ and . in the format (aaa@bb.com)</small>
+    </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" required [class.is-invalid]="pass.invalid&&pass.touched"
+      pattern="^\d{8-10 A-Z}$"
+       id="pwd" ngModel placeholder="Enter password" name="pswd" #pass="ngModel">
+       <small class="text-danger" *ngIf="pass.invalid&&pass.touched">Password is required</small>
+
+    </div>
+    <div class="mb-3">
+      <label for="confPwd">Confirm Cassword:</label>
+      <input type="password" class="form-control"  [class.is-invalid]="confPass.invalid&&confPass.touched"
+      id="confPwd" ngModel placeholder="Enter password" name="confPwd" #confPass="ngModel">
+      <small class="text-danger" *ngIf="confPass.invalid&&confPass.touched">Password is required</small>
+
+    </div>
+    <div class="mb-3">
+      <label for="confPwd" >Where you hear about us: </label>
+      <select ngModel [(ngModel)]="userModel.topic" name="tpbic" required class="ms-2" #select="ngModel">
+        <option>Facebook </option>
+        <option>Twitter</option>
+        <option>Google</option>
+      </select>
+    </div>
+
+    <div class="form-check mb-3">
+      <label class="form-check-label">
+        <input class="form-check-input" required type="checkbox" name="remember"> Remember me
+      </label>
+    </div>
+    <button type="submit"  [disabled]="userForm.form.invalid" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+

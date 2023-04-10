@@ -1,0 +1,48 @@
+
+
+<div class="mt-5 ms-5">
+  <h3>Store Name:{{ StoreName|uppercase}}</h3>
+  <!-- <h3 >{{"Store Name: "+StoreName|uppercase}}</h3> -->
+  <img src={{StoreLogo}} width="150" height="150">
+
+  <h4 *ngIf="Discount=='No Discount' else Havediscount"></h4>
+
+  <ng-template #Havediscount>
+      <h4>
+        We offer an explicit discount of: {{Discount|percent}}
+  </h4>
+  </ng-template>
+
+</div>
+
+<select class="mt-5 ms-5">
+    <option *ngFor="let category of CategoryList" value="{{category.Id}}">{{category.Name}}</option>
+</select>
+
+<br>
+<label class="mt-5 ms-5">Enter Your Name: </label>
+<input type="text" class="mb-4 ms-2" id="name" [(ngModel)]="ClientName">
+<p class="ms-5">Client Name: {{ClientName}}</p>
+
+
+<h3 class="d-flex justify-content-center mt-5">Product List</h3>
+
+
+<div class="d-flex flex-coulm" style="margin-bottom: 2rem; margin-top: 2rem;">
+  <div *ngIf="IsPurshased ; then productDiv; else thankDiv "></div>
+  <ng-template #productDiv>
+    <div class="card ms-5 mr-2" id="productDiv" *ngFor="let product of ProductList">
+        <img class="card-img-bottom" src={{product.imageUrl}} alt="Card image" style="width:100%;margin-bottom:0" width="220px" height="220px">
+        <div class="card-body">
+           <h4 class="card-title">{{product.Name}}</h4>
+           <p class="card-text">{{product.price}}</p>
+          <button class="card-link btn btn-info" (click)="ShowProduct()">Buy</button>
+        </div>
+     </div>
+    </ng-template>
+
+    <ng-template #thankDiv>
+     <div class="ms-5" id="thankDiv">{{"Thanks for purchasing from our Store "+ ClientName}}</div>
+    </ng-template>
+
+</div>
